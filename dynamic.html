@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>Dynamic Responsive</title>
+			<style>
+				* {
+					margin: 0;
+					padding: 0;
+				}
+				section {
+					width: 1000px;
+					text-align: center;
+					margin: 30px auto;
+					padding: 0;
+				}
+				.example {
+					width: 300px;
+					height: 200px;
+					text-align: center;
+					box-shadow: 0px 0px 5px #ccc;
+					transition: all .3s;
+					display: inline-block;
+					padding: 0;
+				}
+				.example:hover {
+					background: #eee;
+				}
+				.ex-span {
+					font-size: 2.8em;
+					line-height: 200px;
+					color: #555;
+					text-transform: uppercase;
+				}
+				.clearfix:after {
+					clear: both;
+					display: block;
+					visibility: hidden;
+					height: 0;
+					content: ".";
+				}
+			</style>
+		</head>
+		<body>
+		
+		<section class="clearfix">
+		
+			<div class="example">
+				<span class="ex-span">Veni</span>
+			</div>
+			
+			<div class="example">
+				<span class="ex-span">Vidi</span>
+			</div>
+			
+			<div class="example">
+				<span class="ex-span">Vici</span>
+			</div>
+			
+		<section>
+		
+			<script>
+				/* Dynamic Responsive */
+				
+				function DynRes( elem ) {
+					this.elem = elem;
+					this.styles = function() {
+						return getComputedStyle( this.elem );
+					}
+				}
+				
+				DynRes.prototype.execWidth = function() {
+					
+					var defElemWidth = parseInt( this.styles().width );
+					var defWindowWidth = document.documentElement.clientWidth;
+					
+					var selfElem = this.elem;
+					
+					window.addEventListener('resize', function() {
+						var newWindowWidth = document.documentElement.clientWidth;
+						var perc = newWindowWidth * 100 / defWindowWidth;
+						selfElem.style.width = defElemWidth * perc / 100 + 'px';
+					});
+				}
+				
+				DynRes.prototype.execFontSize = function() {
+					
+					var defElemFontSize = parseInt( this.styles().fontSize );
+					var defWindowWidth = document.documentElement.clientWidth;
+					
+					var selfElem = this.elem;
+					
+					window.addEventListener('resize', function() {
+						var newWindowWidth = document.documentElement.clientWidth;
+						var perc = newWindowWidth * 100 / defWindowWidth;
+						selfElem.style.fontSize = defElemFontSize * perc / 100 + 'px';
+					});
+				}
+				
+				
+				
+				var section = document.getElementsByTagName('section')[0];
+				var sec = new DynRes( section );
+				sec.execWidth();
+				
+				var examples = document.querySelectorAll('.example');
+				[].forEach.call(examples, function(div) {
+					var o = new DynRes( div );
+					o.execWidth();
+				});
+				
+				var exampleSpans = document.querySelectorAll('.ex-span');
+				[].forEach.call(exampleSpans, function(span) {
+					var o = new DynRes( span );
+					o.execFontSize();
+				});
+				
+				
+				
+				
+				
+			</script>
+		</body>
+	</html>
