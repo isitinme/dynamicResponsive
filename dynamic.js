@@ -8,17 +8,24 @@ function DR( elem ) {
 }
 
 DR.prototype.exec = function( prop, normal ) {
-	var defElemValue = parseInt( this.styles()[prop] );	
 	var selfElem = this.elem;
+	
+	var defElemValue = parseInt( this.styles()[prop] ),
+		defaultWindowWidth;
 
 	if( normal ) {
-		var defaultWindowWidth = normal;
-		var currentWindowWidth = document.documentElement.clientWidth;
-		var perc = currentWindowWidth * 100 / defaultWindowWidth;
-		selfElem.style[prop] = defElemValue * perc / 100 + 'px';
+		defaultWindowWidth = normal;
+		set( defaultWindowWidth );
+	} else {
+		defaultWindowWidth = document.documentElement.clientWidth;
+		set( defaultWindowWidth );
 	}
 	
-	defaultWindowWidth = document.documentElement.clientWidth;
+	function set( def ) {
+		var currentWindowWidth = document.documentElement.clientWidth;
+		var perc = currentWindowWidth * 100 / def;
+		selfElem.style[prop] = defElemValue * perc / 100 + 'px';
+	}
 	
 	window.addEventListener('resize', function() {
 		var newWindowWidth = document.documentElement.clientWidth;

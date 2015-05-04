@@ -15,7 +15,7 @@
 					padding: 0;
 				}
 				.example {
-					width: 200px;
+					width: 300px;
 					height: 200px;
 					text-align: center;
 					box-shadow: 0px 0px 5px #ccc;
@@ -65,8 +65,7 @@
 					examples = document.querySelectorAll('.example')
 					exampleSpans = document.querySelectorAll('.ex-span');
 					
-				var sec = new DR( section );
-				sec.exec( 'width', 1920 );
+				new DR( section ).exec( 'width', 1920 );
 
 				[].forEach.call(examples, function(div) {
 					new DR( div ).exec( 'width', 1920 );
