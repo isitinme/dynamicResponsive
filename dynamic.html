@@ -9,7 +9,7 @@
 					padding: 0;
 				}
 				section {
-					width: 1000px;
+					width: 100%;
 					text-align: center;
 					margin: 30px auto;
 					padding: 0;
@@ -68,7 +68,7 @@
 				new DR( section ).exec( 'width', 1920 );
 
 				[].forEach.call(examples, function(div) {
-					new DR( div ).exec( 'width', 1920 );
+					new DR( div ).exec( 'width', 1920, {point: 960, value: 450} );
 				});
 
 				[].forEach.call(exampleSpans, function(span) {
