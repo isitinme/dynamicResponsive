@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>DR. Chaining</title>
+			<link rel="stylesheet" type="text/css" href="main.css">
+		</head>
+		<body>
+			
+			<section class="clearfix">
+				<div class="example">
+					<span class="ex-span">Veni</span>
+				</div>
+				
+				<div class="example">
+					<span class="ex-span">Vidi</span>
+				</div>
+				
+				<div class="example">
+					<span class="ex-span">Vici</span>
+				</div>
+			</section>
+		
+			<script src="dynamicResponse.js"></script>
+			<script>
+				var examples = document.querySelectorAll('.example'),
+					span = document.querySelectorAll('.ex-span'),
+					normal = 1920;
+				
+				[].forEach.call(examples, function( ex ) {
+					new DynamicResponse( ex )
+						.exec( 'width', normal, 
+						{ 
+							point: 979, 
+							value: 600,
+							css: { 
+								'background': '#f00',
+								'font-family': 'Courier',
+								'marginBottom': '10px'
+							}
+						})
+						.exec( 'height', normal );
+						
+					new DynamicResponse( ex.children[0] )
+						.exec( 'fontSize', normal )
+						.exec( 'lineHeight', normal );
+				});
+			</script>
+		</body>
+	</html>
