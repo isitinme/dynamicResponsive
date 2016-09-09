@@ -6,7 +6,7 @@ A JavaScript class that makes chosen DOM element's CSS property dynamically chan
 
 ## Usage
 
-Look at the index.html for demo's..
+Look at the [index.html](index.html) for demo's..
 
 ## Dev install
 
