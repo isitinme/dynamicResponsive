@@ -1,13 +1,7 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-
-section {
-  margin: 30px auto;
-  padding: 0;
-  width: 100%;
+  margin: 3em;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .example {
@@ -21,20 +15,14 @@ section {
 }
 
 .example:hover {
-  background: #eee;
+  /*important because all css is set by js, fix - throught css variables*/
+  background: #eee !important;
 }
 
 .ex-span {
   color: #555;
   text-transform: uppercase;
-  font-size: 2.8em;
+  font-size: 3em;
+  font-weight: bold;
   line-height: 300px;
-}
-
-.clearfix:after {
-  display: block;
-  visibility: hidden;
-  clear: both;
-  height: 0;
-  content: " ";
 }

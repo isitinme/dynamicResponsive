@@ -4,6 +4,7 @@
 // Plugins
 // import gulp from 'gulp'; // node 6.5.0 currently not supported
 const gulp = require('gulp');
+// const pkg = require('./package.json');
 const del = require('del');
 const $ = require('gulp-load-plugins')();
 const path = require('path');
@@ -17,7 +18,6 @@ const webpackConfig = {
     ],
   },
   devtool: 'source-map',
-  // devtool: 'cheap-module-eval-source-map',
   watch: false,
   output: {
     path: path.resolve(__dirname, './'),
@@ -35,7 +35,7 @@ const webpackConfig = {
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
       // https://github.com/babel/babel-loader#options
-      loader: 'babel?presets[]=es2015&cacheDirectory=true',
+      loader: 'babel?presets[]=latest&plugins[]=add-module-exports&cacheDirectory=true',
     }],
   },
   plugins: [
