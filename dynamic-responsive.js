@@ -1,10 +1,22 @@
 /* Dynamic Responsive */
 
+/**
+ * toCamelCase - used to transform properties to dom element properties
+ * @param  {String} str - origignal
+ * @return {String} str - converted
+ */
 function toCamelCase(str) {
   return str.replace(/-([a-z])/g, g => g[1].toUpperCase());
 }
 
 // es2015+ upd of https://remysharp.com/2010/07/21/throttling-function-calls
+/**
+ * throttle
+ * @param  {Function} fn - callback
+ * @param  {Number} threshhold=250
+ * @param  {Object} scope
+ * @return {Function} function
+ */
 function throttle(fn, threshhold = 250, scope) {
   let last;
   let deferTimer;
@@ -25,6 +37,10 @@ function throttle(fn, threshhold = 250, scope) {
 }
 
 export default class DynamicResponsive {
+  /**
+   * constructor
+   * @param {Object} element - dom element
+   */
   constructor(element) {
     this.element = element;
     this.styles = getComputedStyle(element);
@@ -33,11 +49,22 @@ export default class DynamicResponsive {
     this.handler = null;
   }
 
+  /**
+   * setResize
+   * @param {String} key - property
+   * @param {Number} newWidth
+   * @param {Number} def
+   * @param {Number} val
+   */
   setResize(key, newWidth, def, val) {
     const perc = (newWidth * 100) / def;
     this.element.style[key] = `${(val * perc) / 100}px`;
   }
 
+  /**
+   * applyCSS
+   * @param {Object} styles
+   */
   applyCSS(styles) {
     Object.keys(styles).forEach((key) => {
       const keyNormalized = toCamelCase(key);
@@ -60,6 +87,13 @@ export default class DynamicResponsive {
     }
   }
 
+  /**
+   * exec
+   * @param  {String} prop
+   * @param  {Number} normal
+   * @param  {Object} breakpoint
+   * @return {Class} class
+   */
   exec(prop, normal, breakpoint) {
     const rule = {};
     rule.dev = parseInt(this.styles[prop], 10);
