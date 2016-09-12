@@ -1,0 +1,49 @@
+{
+  "name": "dynamicResponsive",
+  "description": "JavaScript library",
+  "version": "1.0.0",
+  "main": "dynamic-responsive.min.js",
+  "jsnext:main": "dynamic-responsive.js",
+  "author": "Alexander Prytula <isitinme88@gmail.com> (https://alexanderPrytula.github.io/)",
+  "homepage": "https://github.com/alexanderPrytula/dynamicResponsive/",
+  "repository": "alexanderPrytula/dynamicResponsive",
+  "bugs": {
+    "url": "https://github.com/alexanderPrytula/dynamicResponsive/issues"
+  },
+  "keywords": [
+    "responsive",
+    "adaptive",
+    "design",
+    "mediaqueries"
+  ],
+  "babel": {
+    "presets": [
+      "latest"
+    ]
+  },
+  "license": "MIT",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
+    "build": "set NODE_ENV=production&&gulp",
+    "dev": "set NODE_ENV=development&&gulp serve",
+    "lint:scripts": "gulp lint:scripts",
+    "ncu": "npm outdated -g && ncu"
+  },
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.14.0",
+    "browser-sync": "^2.15.0",
+    "del": "^2.2.2",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb": "^11.0.0",
+    "eslint-plugin-html": "^1.5.2",
+    "eslint-plugin-import": "^1.14.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-util": "^3.0.7",
+    "webpack": "^1.13.2"
+  }
+}
